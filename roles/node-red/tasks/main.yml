@@ -7,22 +7,20 @@
   with_items:
     - node-red
     - node-red-contrib-cron
-    - node-red-contrib-gpio
     - node-red-contrib-influxdb
-    - node-red-contrib-join
     - node-red-node-ping
     - node-red-node-random
     - node-red-node-smooth
     - node-red-node-weather-underground
 
-# - name: Remove unnecessary Node-RED packages
-#   npm: 
-#     name: "{{ item }}"
-#     global: yes
-#     state: absent
-#   with_items:
-#     - node-red-node-serialport
-#     - node-red-node-darksky
+- name: Remove unnecessary Node-RED packages
+  npm: 
+    name: "{{ item }}"
+    global: yes
+    state: absent
+  with_items:
+    - node-red-contrib-gpio
+    - node-red-contrib-join
 
 - name: Copy Node-RED icon
   copy:
@@ -45,6 +43,7 @@
     dest: /lib/systemd/system/nodered.service
 
 - name: Copy Node-RED service file
+  become: no
   copy:
     src: settings.js
     dest: ~/settings.js

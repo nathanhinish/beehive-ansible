@@ -7,4 +7,4 @@
     # - nodejs
     - node-red
   remote_user: pi
-  become: true
+  become: yes

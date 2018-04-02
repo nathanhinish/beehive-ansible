@@ -1,1 +1,1 @@
-hive_status,hive=1,latitude=47.640578,longitude=-117.388666 feeder_level=293.49393,external_temp=36.4,external_hum=64,internal_temp=54.2,internal_hum=34,weight=78
+hive_status,hive=1,ip="73.239.140.10",latitude=47.640578,longitude=-117.388666 feeder_level=293.49393,external_temp=36.4,external_hum=64,internal_temp=54.2,internal_hum=34,weight=78
