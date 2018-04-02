@@ -1,6 +1,6 @@
 const settings = require(`${process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME']}/.node-red/settings.js`)
 
-settings.disableEditor = true
+// settings.disableEditor = true
 
 settings.adminAuth = {
   type: 'credentials',

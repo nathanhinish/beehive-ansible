@@ -12,7 +12,7 @@ User=pi
 Group=pi
 WorkingDirectory=/home/pi
 Nice=5
-ExecStart=/usr/bin/env node-red-pi --max_old_space_size=256 -v --settings ~/settings.json
+ExecStart=/usr/bin/env node-red-pi --max_old_space_size=256 -v --settings ~/settings.js
 # Use SIGINT to stop
 KillSignal=SIGINT
 # Auto restart on crash

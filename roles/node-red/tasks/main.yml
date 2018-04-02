@@ -13,14 +13,14 @@
     - node-red-node-smooth
     - node-red-node-weather-underground
 
-- name: Remove unnecessary Node-RED packages
-  npm: 
-    name: "{{ item }}"
-    global: yes
-    state: absent
-  with_items:
-    - node-red-contrib-gpio
-    - node-red-contrib-join
+# - name: Remove unnecessary Node-RED packages
+#   npm: 
+#     name: "{{ item }}"
+#     global: yes
+#     state: absent
+#   with_items:
+#     - node-red-contrib-gpio
+#     - node-red-contrib-join
 
 - name: Copy Node-RED icon
   copy:
@@ -53,4 +53,4 @@
     name: nodered
     daemon_reload: yes
     enabled: yes
-    state: started
+    state: restarted
