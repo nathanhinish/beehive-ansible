@@ -1,0 +1,6 @@
+---
+- name: Update APT cache and upgrade
+  apt:
+    upgrade: yes
+    update_cache: yes
+    cache_valid_time: 86400 # one day

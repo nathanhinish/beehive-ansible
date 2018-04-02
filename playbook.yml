@@ -1,0 +1,10 @@
+---
+
+- name: Playbook for configuring beehive Raspberry Pi
+  hosts: hives
+  roles:
+    # - packages
+    # - nodejs
+    - node-red
+  remote_user: pi
+  become: true

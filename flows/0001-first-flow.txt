@@ -1,0 +1,245 @@
+[{
+  "id": "de9f4764.aedde8",
+  "type": "tab",
+  "label": "Flow 1",
+  "disabled": false,
+  "info": ""
+}, {
+  "id": "45e4631f.ab51fc",
+  "type": "debug",
+  "z": "de9f4764.aedde8",
+  "name": "",
+  "active": true,
+  "tosidebar": true,
+  "console": false,
+  "tostatus": false,
+  "complete": "true",
+  "x": 530,
+  "y": 280,
+  "wires": []
+}, {
+  "id": "172ed9dc.bb3c46",
+  "type": "wunderground",
+  "z": "de9f4764.aedde8",
+  "name": "main-api-key",
+  "lon": "-117.388666",
+  "lat": "47.640578",
+  "city": "",
+  "country": "",
+  "x": 350,
+  "y": 140,
+  "wires": [
+    ["45e4631f.ab51fc"]
+  ]
+}, {
+  "id": "4216f562.2b097c",
+  "type": "cron",
+  "z": "de9f4764.aedde8",
+  "name": "weather",
+  "crontab": "0 0 * * * *",
+  "x": 100,
+  "y": 80,
+  "wires": [
+    ["172ed9dc.bb3c46"]
+  ]
+}, {
+  "id": "71989394.215e3c",
+  "type": "gpio in",
+  "z": "de9f4764.aedde8",
+  "name": "feeder_level",
+  "state": "ANALOG",
+  "samplingInterval": "300",
+  "pin": "",
+  "board": "c290e94f.8909e8",
+  "x": 130,
+  "y": 300,
+  "wires": [
+    []
+  ]
+}, {
+  "id": "d778f247.0830c",
+  "type": "gpio in",
+  "z": "de9f4764.aedde8",
+  "name": "weight",
+  "state": "ANALOG",
+  "samplingInterval": "300",
+  "pin": "",
+  "board": "c290e94f.8909e8",
+  "x": 110,
+  "y": 340,
+  "wires": [
+    []
+  ]
+}, {
+  "id": "c5caff61.f4279",
+  "type": "gpio in",
+  "z": "de9f4764.aedde8",
+  "name": "internal_temp",
+  "state": "ANALOG",
+  "samplingInterval": "300",
+  "pin": "",
+  "board": "c290e94f.8909e8",
+  "x": 130,
+  "y": 380,
+  "wires": [
+    []
+  ]
+}, {
+  "id": "fa00fe14.1d46b",
+  "type": "gpio in",
+  "z": "de9f4764.aedde8",
+  "name": "internal_hum",
+  "state": "ANALOG",
+  "samplingInterval": "300",
+  "pin": "",
+  "board": "c290e94f.8909e8",
+  "x": 130,
+  "y": 420,
+  "wires": [
+    []
+  ]
+}, {
+  "id": "c290e94f.8909e8",
+  "type": "nodebot",
+  "z": "",
+  "name": "beehive-0001",
+  "username": "",
+  "password": "",
+  "boardType": "raspi-io",
+  "serialportName": "",
+  "connectionType": "local",
+  "mqttServer": "",
+  "pubTopic": "",
+  "subTopic": "",
+  "tcpHost": "",
+  "tcpPort": "",
+  "sparkId": "",
+  "sparkToken": "",
+  "beanId": "",
+  "impId": "",
+  "uuid": "",
+  "token": "",
+  "sendUuid": ""
+}][{
+  "id": "de9f4764.aedde8",
+  "type": "tab",
+  "label": "Flow 1",
+  "disabled": false,
+  "info": ""
+}, {
+  "id": "45e4631f.ab51fc",
+  "type": "debug",
+  "z": "de9f4764.aedde8",
+  "name": "",
+  "active": true,
+  "tosidebar": true,
+  "console": false,
+  "tostatus": false,
+  "complete": "true",
+  "x": 530,
+  "y": 280,
+  "wires": []
+}, {
+  "id": "172ed9dc.bb3c46",
+  "type": "wunderground",
+  "z": "de9f4764.aedde8",
+  "name": "main-api-key",
+  "lon": "-117.388666",
+  "lat": "47.640578",
+  "city": "",
+  "country": "",
+  "x": 350,
+  "y": 140,
+  "wires": [
+    ["45e4631f.ab51fc"]
+  ]
+}, {
+  "id": "4216f562.2b097c",
+  "type": "cron",
+  "z": "de9f4764.aedde8",
+  "name": "weather",
+  "crontab": "0 0 * * * *",
+  "x": 100,
+  "y": 80,
+  "wires": [
+    ["172ed9dc.bb3c46"]
+  ]
+}, {
+  "id": "71989394.215e3c",
+  "type": "gpio in",
+  "z": "de9f4764.aedde8",
+  "name": "feeder_level",
+  "state": "ANALOG",
+  "samplingInterval": "300",
+  "pin": "",
+  "board": "c290e94f.8909e8",
+  "x": 130,
+  "y": 300,
+  "wires": [
+    []
+  ]
+}, {
+  "id": "d778f247.0830c",
+  "type": "gpio in",
+  "z": "de9f4764.aedde8",
+  "name": "weight",
+  "state": "ANALOG",
+  "samplingInterval": "300",
+  "pin": "",
+  "board": "c290e94f.8909e8",
+  "x": 110,
+  "y": 340,
+  "wires": [
+    []
+  ]
+}, {
+  "id": "c5caff61.f4279",
+  "type": "gpio in",
+  "z": "de9f4764.aedde8",
+  "name": "internal_temp",
+  "state": "ANALOG",
+  "samplingInterval": "300",
+  "pin": "",
+  "board": "c290e94f.8909e8",
+  "x": 130,
+  "y": 380,
+  "wires": [
+    []
+  ]
+}, {
+  "id": "fa00fe14.1d46b",
+  "type": "gpio in",
+  "z": "de9f4764.aedde8",
+  "name": "internal_hum",
+  "state": "ANALOG",
+  "samplingInterval": "300",
+  "pin": "",
+  "board": "c290e94f.8909e8",
+  "x": 130,
+  "y": 420,
+  "wires": [
+    []
+  ]
+}, {
+  "id": "c290e94f.8909e8",
+  "type": "nodebot",
+  "z": "",
+  "name": "beehive-0001",
+  "username": "",
+  "password": "",
+  "boardType": "raspi-io",
+  "serialportName": "",
+  "connectionType": "local",
+  "mqttServer": "",
+  "pubTopic": "",
+  "subTopic": "",
+  "tcpHost": "",
+  "tcpPort": "",
+  "sparkId": "",
+  "sparkToken": "",
+  "beanId": "",
+  "impId": "",
+  "uuid": "",
+  "token": "",
+  "sendUuid": ""
+}]
