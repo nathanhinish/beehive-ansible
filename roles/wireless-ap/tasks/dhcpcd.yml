@@ -1,0 +1,30 @@
+---
+- name: Stat local dhcpcd.conf
+  become: no
+  stat: 
+    path: "{{ role_path }}/files/dhcpcd.conf"
+  delegate_to: localhost
+  register: l_dhcpcd
+
+- name: Stat /etc/dhcpcd.conf
+  stat:
+    path: /etc/dhcpcd.conf
+  register: r_dhcpcd
+
+- set_fact:
+    dhcpcd_needs_update: "{{ not r_dhcpcd.stat.exists or (l_dhcpcd.stat.checksum != r_dhcpcd.stat.checksum) }}"
+
+- name: Copy to /etc/dhcpcd.conf
+  copy:
+    src: dhcpcd.conf
+    dest: /etc/dhcpcd.conf
+    owner: root
+    group: netdev
+    mode: 0664
+  when: dhcpcd_needs_update
+
+- name: Restart dhcpcd
+  service:
+    name: dhcpcd
+    state: restarted
+  when: dhcpcd_needs_update

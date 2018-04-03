@@ -53,4 +53,4 @@
     name: nodered
     daemon_reload: yes
     enabled: yes
-    state: restarted
+    state: started

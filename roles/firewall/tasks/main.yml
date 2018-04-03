@@ -1,0 +1,21 @@
+---
+- name: Make sure ufw is installed
+  apt:
+    name: ufw
+    state: present
+  
+- name: Allow SSH
+  ufw:
+    rule: allow
+    port: ssh
+  
+- name: Allow traffic to 1880 
+  ufw:
+    rule: allow
+    port: 1880
+    proto: tcp
+
+- name: Enable and set default policy
+  ufw:
+    state: disabled
+    policy: reject

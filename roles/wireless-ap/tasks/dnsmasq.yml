@@ -1,0 +1,35 @@
+---
+- name: Install dnsmasq
+  apt:
+    name: dnsmasq
+    state: present
+
+- name: Stat local wlan0.conf
+  become: no
+  stat: 
+    path: "{{ role_path }}/files/wlan0.conf"
+  delegate_to: localhost
+  register: l_dnsmasq
+
+- name: Stat /etc/dnsmasq.d/wlan0.conf
+  stat:
+    path: /etc/dnsmasq.d/wlan0.conf
+  register: r_dnsmasq
+
+- set_fact:
+    dnsmasq_needs_update: "{{ not r_dnsmasq.stat.exists or (l_dnsmasq.stat.checksum != r_dnsmasq.stat.checksum) }}"
+
+- name: Copy to /etc/dnsmasq.d/wlan0.conf
+  copy:
+    src: wlan0.conf
+    dest: /etc/dnsmasq.d/wlan0.conf
+    owner: root
+    group: root
+    mode: 0664
+  when: dnsmasq_needs_update
+
+- name: Restart dnsmasq
+  service:
+    name: dnsmasq
+    state: restarted
+  when: dnsmasq_needs_update

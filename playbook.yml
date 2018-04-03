@@ -3,8 +3,10 @@
 - name: Playbook for configuring beehive Raspberry Pi
   hosts: hives
   roles:
-    # - packages
+    # - apt-init
+    # - firewall
+    - wireless-ap
     # - nodejs
-    - node-red
+    # - node-red
   remote_user: pi
   become: yes

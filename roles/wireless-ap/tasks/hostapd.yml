@@ -1,0 +1,66 @@
+---
+- name: Install hostapd
+  apt:
+    name: hostapd
+    state: present
+    
+
+# /etc/hostapd.conf
+
+- name: Stat local hostapd.conf
+  become: no
+  stat: 
+    path: "{{ role_path }}/files/hostapd.conf"
+  delegate_to: localhost
+  register: l_hostapd
+
+- name: Stat remote hostapd.conf
+  stat:
+    path: /etc/hostapd.conf
+  register: r_hostapd
+
+- set_fact:
+    hostapd_needs_update: "{{ not r_hostapd.stat.exists or (l_hostapd.stat.checksum != r_hostapd.stat.checksum) }}"
+
+- name: Copy to /etc/hostapd.conf
+  copy:
+    src: hostapd.conf
+    dest: /etc/hostapd.conf
+    owner: root
+    group: root
+    mode: 0644
+  when: hostapd_needs_update
+
+# /etc/default/hostapd
+
+- name: Stat local hostapd.defaults
+  become: no
+  stat: 
+    path: "{{ role_path }}/files/hostapd.default"
+  delegate_to: localhost
+  register: l_def_hostapd
+
+- name: Stat remote /etc/default/hostapd
+  stat:
+    path: /etc/default/hostapd
+  register: r_def_hostapd
+
+- set_fact:
+    def_hostapd_needs_update: "{{ not r_def_hostapd.stat.exists or (l_def_hostapd.stat.checksum != r_def_hostapd.stat.checksum) }}"
+  
+- name: Copy to /etc/default/hostapd
+  copy:
+    src: hostapd.default
+    dest: /etc/default/hostapd
+    owner: root
+    group: root
+    mode: 0644
+  when: def_hostapd_needs_update
+
+# hostapd service
+
+- name: Restart hostapd
+  service:
+    name: hostapd
+    state: restarted
+  when: hostapd_needs_update or def_hostapd_needs_update
