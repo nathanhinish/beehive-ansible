@@ -1,0 +1,4 @@
+{
+  "debug": true,
+  "hosts": ["fd://", "unix:///var/run/docker.sock"]
+}

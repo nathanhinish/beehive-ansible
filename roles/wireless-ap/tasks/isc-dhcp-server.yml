@@ -1,7 +1,7 @@
 ---
-- name: Install dnsmasq
+- name: Install isc-dhcp-server
   apt:
-    name: dnsmasq
+    name: isc-dhcp-server
     state: present
 
 - name: Stat local wlan0.conf

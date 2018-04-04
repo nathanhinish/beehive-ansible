@@ -1,0 +1,22 @@
+---
+version: '3.6'
+
+services:
+  iotwifi:
+    image: cjimti/iotwifi
+    privileged: true
+    restart_policy:
+      condition: on-failure
+      delay: 5s
+      max_attempts: 3
+    volumes: 
+      - type: bind
+        src: ./wificfg.json
+        target: /cfg/wificfg.json
+    networks: 
+      hostnet: {}
+
+networks:
+  hostnet:
+    external:
+      name: host
